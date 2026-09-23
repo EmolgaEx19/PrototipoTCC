@@ -9,11 +9,15 @@ public class ChangeCloth : MonoBehaviour
     public void ChangeBody(Sprite newBody)
     {
         bodyRenderer.sprite = newBody;
+
+        GameManager.Instance.selectedBody = newBody;
     }
 
     public void ChangeShoes(Sprite newShoes)
     {
         shoesRenderer.sprite = newShoes;
+
+        GameManager.Instance.selectedShoes = newShoes;
     }
 
     public void ClearBody()
