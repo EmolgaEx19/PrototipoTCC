@@ -1,32 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangeCloth : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [Header("Partes da personagem")]
-    public SpriteRenderer bodyRenderer;
-    public SpriteRenderer shoesRenderer;
+    public static GameManager Instance;
 
-    public void ChangeBody(Sprite newBody)
+    [Header("Look do jogador")]
+    public Sprite selectedBody;
+    public Sprite selectedShoes;
+
+    [Header("Pontuação")]
+    public int playerScore;
+
+    private void Awake()
     {
-        bodyRenderer.sprite = newBody;
-
-        GameManager.Instance.selectedBody = newBody;
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void ChangeShoes(Sprite newShoes)
+    public void GenerateScore()
     {
-        shoesRenderer.sprite = newShoes;
-
-        GameManager.Instance.selectedShoes = newShoes;
+        playerScore = Random.Range(60, 101);
     }
 
-    public void ClearBody()
-    {
-        bodyRenderer.sprite = null;
-    }
-
-    public void ClearShoes()
-    {
-        shoesRenderer.sprite = null;
-    }
 }

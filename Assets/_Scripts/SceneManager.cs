@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class Manager : MonoBehaviour
 {
     [SerializeField] private string sceneName;
-    public void GoToRunway()
+    public void ChangeScene()
     {
-        //GameManager.Instance.GenerateScore();
+        GameManager.Instance.GenerateScore();
 
         SceneManager.LoadScene(sceneName);
     }
