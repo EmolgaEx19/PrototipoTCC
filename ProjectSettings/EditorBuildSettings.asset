@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Desfile.unity
     guid: d952bd4c02734034aaf79f5de185b6ec
+  - enabled: 1
+    path: Assets/_Scenes/MainMenu.unity
+    guid: 74cc52795e964ef44935bee68adc5373
   m_configObjects: {}
