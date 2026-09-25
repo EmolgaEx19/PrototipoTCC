@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Sprite selectedBody;
     public Sprite selectedShoes;
 
-    [Header("PontuaÁ„o")]
+    [Header("PontuaÔøΩÔøΩo")]
     public int playerScore;
 
     private void Awake()
@@ -29,6 +29,29 @@ public class GameManager : MonoBehaviour
     public void GenerateScore()
     {
         playerScore = Random.Range(60, 101);
+        CheckClothingUnlocks();
+    }
+
+    
+    public void CheckClothingUnlocks()
+    {
+        if (playerScore >= 80)
+        {
+            PlayerPrefs.SetInt("RoupaEspecial", 1);
+        }
+
+        if (playerScore >= 90)
+        {
+            PlayerPrefs.SetInt("RoupaExclusiva", 1);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public bool IsClothingUnlocked(string itemID)
+    {
+        // Se n√£o houver registro, o item come√ßa bloqueado.
+        return PlayerPrefs.GetInt(itemID, 0) == 1;
     }
 
 }
