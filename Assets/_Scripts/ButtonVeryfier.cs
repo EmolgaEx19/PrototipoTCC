@@ -28,10 +28,10 @@ public class ButtonVeryfier : MonoBehaviour
         unlocked = GameManager.Instance.IsClothingUnlocked(itemID);
 
         // Itens sem requisito ficam disponíveis.
-        if (requiredScore <= 0)
+        /*if (requiredScore <= 0)
         {
             unlocked = true;
-        }
+        }*/
 
         button.interactable = unlocked;
 

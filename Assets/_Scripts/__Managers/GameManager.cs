@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+      // ResetRoupaEspecial();
+    }
+
     public void GenerateScore()
     {
         playerScore = Random.Range(60, 101);
@@ -35,14 +40,14 @@ public class GameManager : MonoBehaviour
     
     public void CheckClothingUnlocks()
     {
-        if (playerScore >= 80)
+        if (playerScore >= 75)
         {
-            PlayerPrefs.SetInt("RoupaEspecial", 1);
+            PlayerPrefs.SetInt("Especial", 1);
         }
 
         if (playerScore >= 90)
         {
-            PlayerPrefs.SetInt("RoupaExclusiva", 1);
+            PlayerPrefs.SetInt("Exclusiva", 1);
         }
 
         PlayerPrefs.Save();
@@ -50,8 +55,22 @@ public class GameManager : MonoBehaviour
 
     public bool IsClothingUnlocked(string itemID)
     {
+        int savedValue = PlayerPrefs.GetInt(itemID, 0);
+
+        Debug.Log("Item: " + itemID +
+              " | Valor salvo: " + savedValue);
+
         // Se não houver registro, o item começa bloqueado.
-        return PlayerPrefs.GetInt(itemID, 0) == 1;
+        return savedValue == 1;
+    }
+
+    public void ResetRoupaEspecial()
+    {
+        PlayerPrefs.DeleteKey("Especial");
+        PlayerPrefs.DeleteKey("Exclusiva");
+        PlayerPrefs.Save();
+
+        Debug.Log("Desbloqueio da Especial apagado!");
     }
 
 }
