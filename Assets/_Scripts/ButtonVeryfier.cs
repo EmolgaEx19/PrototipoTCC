@@ -27,6 +27,13 @@ public class ButtonVeryfier : MonoBehaviour
     {
         unlocked = GameManager.Instance.IsClothingUnlocked(itemID);
 
+        if (!unlocked && GameManager.Instance.playerScore >= requiredScore)
+        {
+            GameManager.Instance.TryUnlockClothing(itemID, requiredScore);
+
+            unlocked = true;
+        }
+
         // Itens sem requisito ficam disponíveis.
         /*if (requiredScore <= 0)
         {
@@ -46,5 +53,12 @@ public class ButtonVeryfier : MonoBehaviour
                 lockText.text = requiredScore + " PONTOS";
             }
         }
+
+        Debug.Log(
+            "Item: " + itemID +
+            " | Required Score: " + requiredScore +
+            " | Player Score: " + GameManager.Instance.playerScore +
+            " | Unlocked: " + unlocked
+            );
     }
 }

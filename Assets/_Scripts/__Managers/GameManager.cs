@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -28,17 +28,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-      // ResetRoupaEspecial();
+       //ResetRoupaEspecial();
     }
 
     public void GenerateScore()
     {
         playerScore = Random.Range(60, 101);
-        CheckClothingUnlocks();
+        Debug.Log("Pontuação do desfile: " + playerScore);
     }
 
-    
-    public void CheckClothingUnlocks()
+    public void TryUnlockClothing(string itemID, int requiredScore)
+    {
+        if (playerScore >= requiredScore)
+        {
+            PlayerPrefs.SetInt(itemID, 1);
+            PlayerPrefs.Save();
+
+            Debug.Log(itemID + " foi desbloqueada!");
+        }
+    }
+
+    /*public void CheckClothingUnlocks()
     {
         if (playerScore >= 75)
         {
@@ -51,7 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerPrefs.Save();
-    }
+    }*/
 
     public bool IsClothingUnlocked(string itemID)
     {
@@ -64,6 +74,7 @@ public class GameManager : MonoBehaviour
         return savedValue == 1;
     }
 
+    //Exclui os valores salvos de desbloqueio
     public void ResetRoupaEspecial()
     {
         PlayerPrefs.DeleteKey("Especial");
