@@ -34,12 +34,6 @@ public class ButtonVeryfier : MonoBehaviour
             unlocked = true;
         }
 
-        // Itens sem requisito ficam disponíveis.
-        /*if (requiredScore <= 0)
-        {
-            unlocked = true;
-        }*/
-
         button.interactable = unlocked;
 
         lockIcon.SetActive(!unlocked);
@@ -53,12 +47,5 @@ public class ButtonVeryfier : MonoBehaviour
                 lockText.text = requiredScore + " PONTOS";
             }
         }
-
-        Debug.Log(
-            "Item: " + itemID +
-            " | Required Score: " + requiredScore +
-            " | Player Score: " + GameManager.Instance.playerScore +
-            " | Unlocked: " + unlocked
-            );
     }
 }
