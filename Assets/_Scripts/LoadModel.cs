@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ModelDesfile : MonoBehaviour
+public class LoadModel : MonoBehaviour
 {
     public SpriteRenderer bodyRenderer;
     public SpriteRenderer shoesRenderer;
