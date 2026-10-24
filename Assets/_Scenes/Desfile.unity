@@ -830,30 +830,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1437868983}
-        m_TargetAssemblyTypeName: ChangeCloth, Assembly-CSharp
-        m_MethodName: ClearBody
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1437868983}
-        m_TargetAssemblyTypeName: ChangeCloth, Assembly-CSharp
-        m_MethodName: ClearShoes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &802354265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,11 +939,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1437868979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb89dbd98824994439ccfb0f9df47011, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c5fafd0a103cf541b6e77abc3874947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyRenderer: {fileID: 0}
-  shoesRenderer: {fileID: 0}
+  baseBody: {fileID: 21300000, guid: c8bf47c96fae5dc4bb53f0f6a99d3275, type: 3}
+  baseShoes: {fileID: 21300000, guid: 55d5c6e74e43f4d4e96d8d7ddc576cd4, type: 3}
 --- !u!1 &1615669084
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ public class ChangeCloth : MonoBehaviour
     public SpriteRenderer bodyRenderer;
     public SpriteRenderer shoesRenderer;
 
-    [SerializeField] private Sprite baseBody;
-    [SerializeField] private Sprite baseShoes;
 
     public void ChangeBody(Sprite newBody)
     {
@@ -21,11 +19,5 @@ public class ChangeCloth : MonoBehaviour
         shoesRenderer.sprite = newShoes;
 
         GameManager.Instance.selectedShoes = newShoes;
-    }
-
-    public void ResetBody()
-    {
-        bodyRenderer.sprite = baseBody;
-        shoesRenderer.sprite = baseShoes;
-    }
+    }  
 }
