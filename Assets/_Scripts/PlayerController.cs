@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce = 10f;
     public int health = 100;
+    public bool isAlive = true;
 
     private bool isGrounded;
 
@@ -68,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        isAlive = false;
+
         Debug.Log("Você morreu");
     }
 }

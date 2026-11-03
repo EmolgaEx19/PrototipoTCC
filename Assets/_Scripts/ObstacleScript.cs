@@ -3,18 +3,18 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
     private float obstacleSpeed = 5f;
-
-    [SerializeField] private float destroyX = -15f;
-
+    [SerializeField] private int damage = 25;
 
     private void Update()
     {
         // Movimenta o obstáculo para a esquerda
         transform.position += Vector3.left * obstacleSpeed * Time.deltaTime;
+    }
 
-        // Destrói o obstáculo quando sair da tela
-        if (transform.position.x <= destroyX)
-        {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Destroyer"))
+        {            
             Destroy(gameObject);
         }
     }
@@ -22,5 +22,10 @@ public class ObstacleScript : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         obstacleSpeed = newSpeed;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 }
