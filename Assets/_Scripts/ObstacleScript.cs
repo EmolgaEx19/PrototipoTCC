@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObstacleMovement : MonoBehaviour
+public class ObstacleScript : MonoBehaviour
 {
     private float obstacleSpeed = 5f;
 

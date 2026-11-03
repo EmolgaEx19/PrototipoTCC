@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public float jumpForce = 10f;
+    public int health = 100;
+
     private bool isGrounded;
 
 
@@ -15,7 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
             Jump();
         }
     }
@@ -38,5 +41,33 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            ObstacleScript obstacle =
+                collision.gameObject.GetComponent<ObstacleScript>();
+
+            if (obstacle != null)
+            {
+                TakeDamage(obstacle.GetDamage());
+            }
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        Debug.Log("Vida do jogador: " + health);
+
+        if (health <= 0) { 
+            health = 0;
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Você morreu");
     }
 }

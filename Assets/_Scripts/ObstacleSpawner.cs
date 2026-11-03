@@ -42,8 +42,8 @@ public class ObstacleSpawner : MonoBehaviour
         );
 
         // Define a velocidade do obstáculo
-        ObstacleMovement movement =
-            newObstacle.GetComponent<ObstacleMovement>();
+        ObstacleScript movement =
+            newObstacle.GetComponent<ObstacleScript>();
 
         if (movement != null)
         {
