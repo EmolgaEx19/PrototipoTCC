@@ -7,7 +7,10 @@ public class GroundMovement : MonoBehaviour
     [SerializeField] private Transform ground1;
     [SerializeField] private Transform ground2;
 
+    [Header("Movement Settings")]
     public float groundSpeed = 5f;
+    public int speedIncreaseRate = 5;
+    [SerializeField] private float maxSpeed = 40f;
 
     private float groundWidth;
 
@@ -19,8 +22,18 @@ public class GroundMovement : MonoBehaviour
 
     private void Update()
     {
+        IncreaseSpeed();
         MoveGround();
         RepositionGround();
+    }
+
+    private void IncreaseSpeed()
+    {
+        if(groundSpeed < maxSpeed)
+        {
+            groundSpeed += (speedIncreaseRate / 100) * Time.deltaTime;
+            groundSpeed = Mathf.Min(groundSpeed, maxSpeed);
+        }
     }
 
     private void MoveGround()
