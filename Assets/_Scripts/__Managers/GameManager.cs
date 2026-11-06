@@ -10,8 +10,15 @@ public class GameManager : MonoBehaviour
     public Sprite selectedBody;
     public Sprite selectedShoes;
 
-    [Header("Pontua��o")]
+    [Header("Pontuação")]
     public int playerScore;
+
+    [Header("Coins Settings")]
+    [SerializeField] private int totalCoins;
+
+
+    private const string COINS_KEY = "PlayerCoins";
+
 
     private void Awake()
     {
@@ -19,6 +26,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            totalCoins =  PlayerPrefs.GetInt(COINS_KEY, 0);
         }
         else
         {
@@ -26,6 +35,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    //Gera o score aleatório
+    // -> Apagar depois
     public void GenerateScore()
     {
         playerScore = Random.Range(60, 101);
@@ -41,11 +53,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public bool IsClothingUnlocked(string itemID)
     {
         int savedValue = PlayerPrefs.GetInt(itemID, 0);
 
         return savedValue == 1;
+    }
+
+    //Fazer a função pra remover tbm
+    public void AddCoin(int amount)
+    {
+        totalCoins += amount;
+
+        PlayerPrefs.SetInt(COINS_KEY, totalCoins);
+        PlayerPrefs.Save();
+
+        Debug.Log($"Total de moedas: {totalCoins}");
+    }
+
+    public int GetTotalCoins()
+    {
+        return totalCoins;
     }
 }

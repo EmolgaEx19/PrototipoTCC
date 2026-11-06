@@ -42,20 +42,9 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
-
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            ObstacleScript obstacle =
-                collision.gameObject.GetComponent<ObstacleScript>();
-
-            if (obstacle != null)
-            {
-                TakeDamage(obstacle.GetDamage());
-            }
-        }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
 

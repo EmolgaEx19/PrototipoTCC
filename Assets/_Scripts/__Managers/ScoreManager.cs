@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     {
         distance += gm.groundSpeed * Time.deltaTime;
 
-        Debug.Log("Score: " + GetScore());
+        //Debug.Log("Score: " + GetScore());
     }
 
     public int GetScore()
