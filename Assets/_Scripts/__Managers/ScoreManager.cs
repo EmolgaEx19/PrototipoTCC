@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] private GroundMovement gm;
     [SerializeField] private PlayerController pc;
 
     [SerializeField] private float scoreMultiplier = 1f;
@@ -27,7 +26,7 @@ public class ScoreManager : MonoBehaviour
 
     private void CalculateScore()
     {
-        distance += gm.groundSpeed * Time.deltaTime;
+        distance += GroundMovement.Instance.GetSpeed() * Time.deltaTime;
 
         //Debug.Log("Score: " + GetScore());
     }

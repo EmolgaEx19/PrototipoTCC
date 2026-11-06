@@ -3454,6 +3454,7 @@ MonoBehaviour:
   selectedBody: {fileID: 0}
   selectedShoes: {fileID: 0}
   playerScore: 0
+  totalCoins: 0
 --- !u!1 &2016280455
 GameObject:
   m_ObjectHideFlags: 0

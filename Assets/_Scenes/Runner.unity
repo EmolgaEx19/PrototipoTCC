@@ -364,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d2eed0b265f2442a3f3dc0195c1cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 502422666}
   pc: {fileID: 48413688}
   scoreMultiplier: 1
 --- !u!4 &593157644
@@ -531,67 +530,11 @@ MonoBehaviour:
   - {fileID: 7861645944851645048, guid: efb1f3ab724bc8240919bbe87f93a13b, type: 3}
   - {fileID: 7403796690914893222, guid: 5b86faf636ed0324abac32f1a4876407, type: 3}
   - {fileID: 5877328157561011405, guid: 5c7bb257a7937684e9d5d5a8b31ccfb1, type: 3}
+  - {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
   spawnPoint: {fileID: 659428620}
   minSpawnInterval: 2
   maxSpawnInterval: 4
   obstacleSpeed: 5
---- !u!1001 &807708244
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_Name
-      value: Coin
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.9538336
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.8486633
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653268720860638731, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
 --- !u!1 &826845959
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +750,7 @@ MonoBehaviour:
   - {fileID: 7861645944851645048, guid: efb1f3ab724bc8240919bbe87f93a13b, type: 3}
   - {fileID: 7403796690914893222, guid: 5b86faf636ed0324abac32f1a4876407, type: 3}
   - {fileID: 5877328157561011405, guid: 5c7bb257a7937684e9d5d5a8b31ccfb1, type: 3}
+  - {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
   spawnPoint: {fileID: 951262331}
   minSpawnInterval: 2
   maxSpawnInterval: 4
@@ -1306,6 +1250,7 @@ MonoBehaviour:
   - {fileID: 7861645944851645048, guid: efb1f3ab724bc8240919bbe87f93a13b, type: 3}
   - {fileID: 7403796690914893222, guid: 5b86faf636ed0324abac32f1a4876407, type: 3}
   - {fileID: 5877328157561011405, guid: 5c7bb257a7937684e9d5d5a8b31ccfb1, type: 3}
+  - {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
   spawnPoint: {fileID: 1583556419}
   minSpawnInterval: 2
   maxSpawnInterval: 4
@@ -1560,6 +1505,5 @@ SceneRoots:
   - {fileID: 1025141936}
   - {fileID: 875336012}
   - {fileID: 1063629467}
-  - {fileID: 807708244}
   - {fileID: 605913970}
   - {fileID: 1421032153}

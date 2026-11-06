@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
+    public static GroundMovement Instance;
+
     [SerializeField] private Transform ground1;
     [SerializeField] private Transform ground2;
 
     [Header("Movement Settings")]
-    public float groundSpeed = 5f;
+    [SerializeField] private float groundSpeed = 5f;
     public int speedIncreaseRate = 5;
     [SerializeField] private float maxSpeed = 40f;
 
     private float groundWidth;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -66,5 +80,10 @@ public class GroundMovement : MonoBehaviour
                 ground2.position.z
             );
         }
+    }
+
+    public float GetSpeed()
+    {
+        return groundSpeed;
     }
 }

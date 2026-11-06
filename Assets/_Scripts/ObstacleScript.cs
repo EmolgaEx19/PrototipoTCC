@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    [SerializeField] private GroundMovement gmov;
-    private float obstacleSpeed = 5f;
     [SerializeField] private int damage = 25;
+    private float obstacleSpeed;
+    private bool isDiferent = false;
 
-    private void Awake()
-    {
-        gmov = FindFirstObjectByType<GroundMovement>();
-    }
 
     private void Update()
     {
+        if (!isDiferent)
+        {
+            obstacleSpeed = GroundMovement.Instance.GetSpeed();
+        }
+
         // Movimenta o obstáculo para a esquerda
-        transform.position += Vector3.left * gmov.groundSpeed * Time.deltaTime;
+        transform.position += Vector3.left * obstacleSpeed * Time.deltaTime;
     }
 
 
