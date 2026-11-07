@@ -17,7 +17,9 @@ MonoBehaviour:
   rarity: 0
   icon: {fileID: 0}
   characterSprite: {fileID: 0}
-  baseScore: 50
   speedBonus: 15
   luckBonus: 0
   healthBonus: 0
+  themeBonuses:
+  - theme: {fileID: 11400000, guid: 3fb983ea10da7ea4faf8041c507b71b1, type: 2}
+    bonus: 0

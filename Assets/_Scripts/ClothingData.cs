@@ -26,17 +26,21 @@ public class ClothingData : ScriptableObject
     public ClothingType type;
     public ClothingRarity rarity;
 
+    [Header("Parte visível")]
     public Sprite icon;
     public Sprite characterSprite;
 
     /*[TextArea]
     public string description;*/
 
-    [Header("Pontuacao")]
-    public int baseScore;
+    /*[Header("Pontuacao")]
+    public int baseScore;*/
 
     [Header("Atributos")]
     public float speedBonus;
     public float luckBonus;
     public float healthBonus;
+
+    [Header("Bônus por tema:")]
+    public ThemeBonus[] themeBonuses;
 }
