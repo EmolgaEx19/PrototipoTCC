@@ -25,8 +25,9 @@ public class ClothingData : ScriptableObject
     public string clothName;
     public ClothingType type;
     public ClothingRarity rarity;
+    public bool isLocked;
 
-    [Header("Parte visível")]
+    [Header("Parte visï¿½vel")]
     public Sprite icon;
     public Sprite characterSprite;
 
@@ -41,6 +42,6 @@ public class ClothingData : ScriptableObject
     public float luckBonus;
     public float healthBonus;
 
-    [Header("Bônus por tema:")]
+    [Header("Bï¿½nus por tema:")]
     public ThemeBonus[] themeBonuses;
 }
