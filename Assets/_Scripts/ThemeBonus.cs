@@ -5,6 +5,9 @@ using UnityEngine;
 [Serializable]
 public class ThemeBonus
 {
-    public RoundTHemes theme;
-    public int bonus;
+    public PossibleTheme theme;
+
+    [Header("Nível de combinação")]
+    [Range(1,5)]
+    public int matchLevel;
 }

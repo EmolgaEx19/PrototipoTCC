@@ -22,4 +22,4 @@ MonoBehaviour:
   healthBonus: 0
   themeBonuses:
   - theme: {fileID: 11400000, guid: 3fb983ea10da7ea4faf8041c507b71b1, type: 2}
-    bonus: 0
+    bonus: 1

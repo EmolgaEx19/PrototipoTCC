@@ -27,16 +27,16 @@ public class ClothingDataEditor : Editor
     {
         ClothingData item = (ClothingData)target;
 
-        string[] guids = AssetDatabase.FindAssets("t:RoundTHemes");
+        string[] guids = AssetDatabase.FindAssets("t:PossibleTheme");
 
-        List<RoundTHemes> themes = new List<RoundTHemes>();
+        List<PossibleTheme> themes = new List<PossibleTheme>();
 
         foreach (string guid in guids)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
 
-            RoundTHemes theme =
-                AssetDatabase.LoadAssetAtPath<RoundTHemes>(path);
+            PossibleTheme theme =
+                AssetDatabase.LoadAssetAtPath<PossibleTheme>(path);
 
             if (theme != null)
                 themes.Add(theme);
@@ -44,17 +44,17 @@ public class ClothingDataEditor : Editor
 
         List<ThemeBonus> updatedBonuses = new List<ThemeBonus>();
 
-        foreach (RoundTHemes theme in themes)
+        foreach (PossibleTheme theme in themes)
         {
             ThemeBonus existing = null;
 
             if (item.themeBonuses != null)
             {
-                foreach (ThemeBonus bonus in item.themeBonuses)
+                foreach (ThemeBonus matchLevel in item.themeBonuses)
                 {
-                    if (bonus != null && bonus.theme == theme)
+                    if (matchLevel != null && matchLevel.theme == theme)
                     {
-                        existing = bonus;
+                        existing = matchLevel;
                         break;
                     }
                 }
@@ -69,7 +69,7 @@ public class ClothingDataEditor : Editor
                 updatedBonuses.Add(new ThemeBonus
                 {
                     theme = theme,
-                    bonus = 0
+                    matchLevel = 0
                 });
             }
         }

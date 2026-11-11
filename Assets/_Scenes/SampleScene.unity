@@ -610,7 +610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Desfile
-  generateScoreOnTransition: 1
 --- !u!4 &407136043
 Transform:
   m_ObjectHideFlags: 0
@@ -2076,6 +2075,7 @@ Transform:
   m_Children:
   - {fileID: 407136043}
   - {fileID: 1573530220}
+  - {fileID: 1310256983}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &859712100
@@ -2606,6 +2606,53 @@ MonoBehaviour:
   button: {fileID: 1154198474}
   lockIcon: {fileID: 919166431}
   lockText: {fileID: 248640170}
+--- !u!1 &1310256982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310256983}
+  - component: {fileID: 1310256984}
+  m_Layer: 0
+  m_Name: ThemeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1310256983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310256982}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 859712099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310256984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310256982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df2bf1f48db60d4c8041e6af02fec7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableThemes:
+  - {fileID: 11400000, guid: 3fb983ea10da7ea4faf8041c507b71b1, type: 2}
+  themeText: {fileID: 0}
 --- !u!1 &1370116947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3723,9 +3770,9 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2004089601}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1752101222}
   - {fileID: 1681478166}
-  - {fileID: 2004089601}
   - {fileID: 859712099}

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewTheme", menuName = "DripLab/Theme")]
-public class RoundTHemes : ScriptableObject
+public class PossibleTheme : ScriptableObject
 {
     public string themeName;
 }

@@ -18,5 +18,10 @@ public class CoinScript : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Destroyer"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
