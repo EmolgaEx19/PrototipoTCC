@@ -25,6 +25,9 @@ public class ClothingData : ScriptableObject
     public string clothName;
     public ClothingType type;
     public ClothingRarity rarity;
+
+    [Header("Desbloqueio")]
+    [Min(0)] public int price;
     public bool isLocked;
 
     [Header("Parte vis�vel")]
