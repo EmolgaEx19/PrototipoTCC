@@ -56,9 +56,14 @@ public class ThemeManager : MonoBehaviour
 
         CurrentTheme = validThemes[randomIndex];
 
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetCurrentTheme(CurrentTheme);
+        }
+
         if (themeText != null)
         {
-            themeText.text = "TEMA: " + CurrentTheme.themeName;
+            themeText.text = CurrentTheme.themeName;
         }
 
         Debug.Log("Tema sorteado: " + CurrentTheme.themeName);

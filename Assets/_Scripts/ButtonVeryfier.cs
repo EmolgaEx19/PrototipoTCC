@@ -80,8 +80,10 @@ public class ButtonVeryfier : MonoBehaviour
             Debug.Log("Roupa comprada: " + clothingData.clothName);
         }
 
-        // Seleciona a peça se já estava desbloqueada
-        // ou se a compra acabou de ser concluída.
+        // Registra a roupa equipada no GameManager
+        GameManager.Instance.EquipClothing(clothingData);
+
+        // Executa as ações de seleçã
         onClothingSelected?.Invoke();
     }
 }

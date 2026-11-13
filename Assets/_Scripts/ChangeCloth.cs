@@ -3,15 +3,15 @@ using UnityEngine;
 public class ChangeCloth : MonoBehaviour
 {
     [Header("Partes da personagem")]
-    public SpriteRenderer bodyRenderer;
+    public SpriteRenderer shirtRenderer;
     public SpriteRenderer shoesRenderer;
 
 
-    public void ChangeBody(Sprite newBody)
+    public void ChangeShirt(Sprite newShirt)
     {
-        bodyRenderer.sprite = newBody;
+        shirtRenderer.sprite = newShirt;
 
-        GameManager.Instance.selectedBody = newBody;
+        GameManager.Instance.selectedBody = newShirt;
     }
 
     public void ChangeShoes(Sprite newShoes)
