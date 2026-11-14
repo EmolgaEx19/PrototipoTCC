@@ -6,15 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private PlayerController pc;
 
-    [SerializeField] private float scoreMultiplier = 1f;
-
     private float distance;
-
-    /*private void Awake()
-    {
-        gm = GetComponent<GroundMovement>();
-        pc = GetComponent<PlayerController>();
-    }*/
 
     private void Update()
     {
@@ -27,12 +19,10 @@ public class ScoreManager : MonoBehaviour
     private void CalculateScore()
     {
         distance += GroundMovement.Instance.GetSpeed() * Time.deltaTime;
-
-        //Debug.Log("Score: " + GetScore());
     }
 
     public int GetScore()
     {
-        return Mathf.FloorToInt(distance * scoreMultiplier);
+        return Mathf.FloorToInt(distance);
     }
 }

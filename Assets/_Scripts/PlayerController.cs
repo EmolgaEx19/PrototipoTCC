@@ -58,8 +58,17 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
+        if (!isAlive)
+            return;
+
         isAlive = false;
 
-        Debug.Log("Você morreu");
+        RunnerGameManager runnerManager =
+            FindFirstObjectByType<RunnerGameManager>();
+
+        if (runnerManager != null)
+        {
+            runnerManager.FinalizeRun();
+        }
     }
 }
