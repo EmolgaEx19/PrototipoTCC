@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class ItemDropManager : MonoBehaviour
 {
+    public string LastRewardMessage { get; private set; }
+
     [Header("Roupas disponíveis para drop")]
     [SerializeField]
-    private List<ClothingDropEntry> possibleDrops =
-        new List<ClothingDropEntry>();
+    private List<ClothingData> possibleDrops =
+        new List<ClothingData>();
 
     [Header("Recompensa alternativa")]
     [SerializeField] private int fallbackCoins = 50;
 
-    private List<ClothingDropEntry> pendingClothes =
-        new List<ClothingDropEntry>();
+    private List<ClothingData> pendingClothes =
+        new List<ClothingData>();
 
     private HashSet<string> reservedIDs =
         new HashSet<string>();
@@ -26,18 +28,18 @@ public class ItemDropManager : MonoBehaviour
         if (rewardsDelivered || GameManager.Instance == null)
             return false;
 
-        List<ClothingDropEntry> available =
-            new List<ClothingDropEntry>();
+        List<ClothingData> available =
+            new List<ClothingData>();
 
-        foreach (ClothingDropEntry entry in possibleDrops)
+        foreach (ClothingData clothing in possibleDrops)
         {
-            if (entry == null || entry.clothing == null)
+            if (clothing == null)
                 continue;
 
-            if (string.IsNullOrWhiteSpace(entry.itemID))
+            if (string.IsNullOrWhiteSpace(clothing.itemID))
                 continue;
 
-            if (reservedIDs.Contains(entry.itemID))
+            if (reservedIDs.Contains(clothing.itemID))
                 continue;
 
             bool unlocked = GameManager.Instance.IsClothingUnlocked(
@@ -47,7 +49,7 @@ public class ItemDropManager : MonoBehaviour
 
             if (!unlocked)
             {
-                available.Add(entry);
+                available.Add(clothing);
             }
         }
 
@@ -55,18 +57,24 @@ public class ItemDropManager : MonoBehaviour
         {
             int index = Random.Range(0, available.Count);
 
-            ClothingDropEntry selected = available[index];
+            ClothingData selected = available[index];
 
             pendingClothes.Add(selected);
             reservedIDs.Add(selected.itemID);
 
+            LastRewardMessage =
+              "Nova roupa encontrada: " + selected.clothName;
+
             Debug.Log(
-                "Drop reservado: " + selected.clothing.clothName
+                "Drop reservado: " + selected.clothName
             );
         }
         else
         {
-            pendingCoins += Mathf.Max(0, fallbackCoins);
+            pendingCoins += fallbackCoins;
+
+            LastRewardMessage =
+              "Recompensa encontrada: +" + fallbackCoins + " moedas!";
 
             Debug.Log(
                 "Recompensa alternativa: " +
@@ -84,13 +92,13 @@ public class ItemDropManager : MonoBehaviour
 
         rewardsDelivered = true;
 
-        foreach (ClothingDropEntry entry in pendingClothes)
+        foreach (ClothingData clothing in pendingClothes)
         {
-            PlayerPrefs.SetInt(entry.itemID, 1);
+            PlayerPrefs.SetInt(clothing.itemID, 1);
 
             Debug.Log(
                 "Roupa desbloqueada: " +
-                entry.clothing.clothName
+                clothing.clothName
             );
         }
 
@@ -109,14 +117,6 @@ public class ItemDropManager : MonoBehaviour
 
     public List<ClothingData> GetPendingClothes()
     {
-        List<ClothingData> result =
-            new List<ClothingData>();
-
-        foreach (ClothingDropEntry entry in pendingClothes)
-        {
-            result.Add(entry.clothing);
-        }
-
-        return result;
+        return new List<ClothingData>(pendingClothes);
     }
 }

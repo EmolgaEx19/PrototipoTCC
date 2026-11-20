@@ -4,12 +4,13 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     private ItemDropManager dropManager;
+    private ItemDropUI itemDropUI;
     private bool collected = false;
 
     private void Start()
     {
-        dropManager =
-            FindFirstObjectByType<ItemDropManager>();
+        dropManager = FindFirstObjectByType<ItemDropManager>();
+        itemDropUI = FindFirstObjectByType<ItemDropUI>();
     }
 
     private void Update()
@@ -39,6 +40,14 @@ public class BoxScript : MonoBehaviour
         if (dropManager.CollectBox())
         {
             collected = true;
+
+            if (itemDropUI != null)
+            {
+                itemDropUI.ShowNotification(
+                    dropManager.LastRewardMessage
+                );
+            }
+
             Destroy(gameObject);
         }
     }

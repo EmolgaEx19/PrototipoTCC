@@ -23,9 +23,9 @@ public class ClothingData : ScriptableObject
 {
     [Header("Informacoes")]
     public string clothName;
+    public string itemID;
     public ClothingType type;
     public ClothingRarity rarity;
-    public string itemID;
 
     [Header("Desbloqueio")]
     [Min(0)] public int price;

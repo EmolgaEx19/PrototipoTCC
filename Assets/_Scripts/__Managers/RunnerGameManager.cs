@@ -8,6 +8,7 @@ public class RunnerGameManager : MonoBehaviour
     [Header("Managers")]
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private RunnerUIManager runnerUI;
+    [SerializeField] private ItemDropUI itemDropUI;
     [SerializeField] private ItemDropManager itemDropManager;
 
     [Header("Game Over UI")]
@@ -15,6 +16,7 @@ public class RunnerGameManager : MonoBehaviour
     [SerializeField] private TMP_Text finalDistanceText;
     [SerializeField] private TMP_Text finalCoinsText;
     [SerializeField] private TMP_Text multiplierText;
+    [SerializeField] private TMP_Text boxCoinsText;
     [SerializeField] private TMP_Text totalCoinsText;
 
     [Header("Reward Settings")]
@@ -68,7 +70,10 @@ public class RunnerGameManager : MonoBehaviour
         int itemBoxCoins = 0;
 
         if (itemDropManager != null)
+        {
             itemBoxCoins = itemDropManager.DeliverRewards();
+            Debug.Log("Moedas concedidas: " +  itemBoxCoins);
+        }
 
         int finalReward = rewardedCoins + itemBoxCoins; //total de moedas após multiplicação + moedas das caixas
 
@@ -83,7 +88,17 @@ public class RunnerGameManager : MonoBehaviour
 
         multiplierText.text = "x" + coinMultiplier.ToString("0.##");
 
+        if (itemBoxCoins > 0)
+        {
+            boxCoinsText.text = $"+{itemBoxCoins}";
+        }
+
         totalCoinsText.text = $"{finalReward.ToString()}$";
+
+        if (itemDropUI != null)
+        {
+            itemDropUI.PrepareGameOver();
+        }
 
         // Exibe o menu e pausa o jogo
         gameOverPanel.SetActive(true);

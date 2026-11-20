@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Camisa_preta
   m_EditorClassIdentifier: 
   clothName: Camisa Preta Lisa
+  itemID: shirt_01
   type: 0
   rarity: 0
   price: 0

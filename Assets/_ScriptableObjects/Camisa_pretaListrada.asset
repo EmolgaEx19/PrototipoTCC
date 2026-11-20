@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Camisa_pretaListrada
   m_EditorClassIdentifier: 
   clothName: Camisa Preta Listrada
+  itemID: shirt_02
   type: 0
   rarity: 0
   price: 0

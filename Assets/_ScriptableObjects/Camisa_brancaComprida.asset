@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Camisa_brancaComprida
   m_EditorClassIdentifier: 
   clothName: Camisa Branca Manga-comprida
+  itemID: shirt_03
   type: 0
   rarity: 1
   price: 10

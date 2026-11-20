@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ButtonVeryfier : MonoBehaviour
 {
     [Header("Identificação")]
-    public string itemID;
+    //public string itemID;
     public ClothingData clothingData;
 
     [Header("Visual")]
@@ -38,7 +38,7 @@ public class ButtonVeryfier : MonoBehaviour
             return;
 
         unlocked = GameManager.Instance.IsClothingUnlocked(
-            itemID,
+            clothingData.itemID,
             clothingData.isLocked
         );
 
@@ -65,7 +65,7 @@ public class ButtonVeryfier : MonoBehaviour
         if (!unlocked)
         {
             bool purchased = GameManager.Instance.TryUnlockClothing(
-                itemID,
+                clothingData.itemID,
                 clothingData.price
             );
 
@@ -83,7 +83,7 @@ public class ButtonVeryfier : MonoBehaviour
         // Registra a roupa equipada no GameManager
         GameManager.Instance.EquipClothing(clothingData);
 
-        // Executa as ações de seleçã
+        // Executa as ações de seleção
         onClothingSelected?.Invoke();
     }
 }
