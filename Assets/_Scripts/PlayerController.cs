@@ -5,10 +5,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public float jumpForce = 10f;
-    public int health = 100;
+    private bool isGrounded;
+
+    public int maxHealth = 100;
+    public int health;
     public bool isAlive = true;
 
-    private bool isGrounded;
+    [Header("Damage Feedback")]
+    [SerializeField] private DamageFlashUI damageFlashUI;
+
+    [Header("HUD")]
+    [SerializeField] private HealthBarUI healthBarUI;
 
 
     private void Awake()
@@ -16,8 +23,22 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        ApplyHealthBonus();
+        // Inicializa a vida do jogador
+        maxHealth = Mathf.Max(1, maxHealth);
+        health = maxHealth;
+        isAlive = true;
+
+        UpdateHealthUI();
+    }
+
     private void Update()
     {
+        if (!isAlive)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
@@ -44,23 +65,61 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void ApplyHealthBonus()
+    {
+        if (GameManager.Instance == null)
+            return;
+
+        OutfitStats stats =
+            GameManager.Instance.GetTotalOutfitStats();
+
+        if (stats.health <= 0)
+            return;
+
+        int bonusHealth = Mathf.RoundToInt(
+            Mathf.Max(0f, stats.health)
+        );
+
+        maxHealth += bonusHealth;
+
+        Debug.Log(
+            "Vida máxima com bônus: " + maxHealth
+        );
+    }
+
+
     public void TakeDamage(int damage)
     {
+        if (!isAlive || damage <= 0)
+            return;
+
         health -= damage;
 
-        Debug.Log("Vida do jogador: " + health);
+        if (damageFlashUI != null)
+        {
+            damageFlashUI.Flash();
+        }
+
+        UpdateHealthUI();
 
         if (health <= 0) { 
             health = 0;
             Die();
         }
+
+        Debug.Log("Vida do jogador: " + health);
+    }
+
+    private void UpdateHealthUI()
+    {
+        if (healthBarUI != null)
+        {
+            healthBarUI.UpdateHealth(health, maxHealth);
+        }
     }
 
     private void Die()
     {
-        if (!isAlive)
-            return;
-
         isAlive = false;
 
         RunnerGameManager runnerManager =

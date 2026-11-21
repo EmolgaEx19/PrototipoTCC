@@ -3,11 +3,20 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    public enum SpawnType
+    {
+        Obstacle,
+        Platform,
+        Coin,
+        ItemBox
+    }
+
     //Armazena cada elemento e sua probabilidade
     [System.Serializable]
     public class SpawnElement
     {
         public GameObject prefab;
+        public SpawnType type;
 
         [Min(0f)]
         public float weight = 1f;
@@ -20,9 +29,20 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float minSpawnInterval = 2f;
     [SerializeField] private float maxSpawnInterval = 4f;
 
+    [Header("Bônus de Sorte")]
+    [SerializeField] private float luckBonusPerPoint = 0.01f;
+    [SerializeField] private float maxLuckBonus = 0.5f;
+    private float luckMultiplier = 1f;
+
     [SerializeField] private bool showSpawnLogs = false;
 
     private float spawnTimer;
+
+    private void Start()
+    {
+        ApplyLuckBonus();
+    }
+
 
     private void Update()
     {
@@ -32,6 +52,34 @@ public class ObstacleSpawner : MonoBehaviour
         {
             ResetSpawnTimer();
             SpawnObstacle();  
+        }
+    }
+
+    // Calcula o bônus das roupas uma vez por rodada
+    private void ApplyLuckBonus()
+    {
+        luckMultiplier = 1f;
+
+        if (GameManager.Instance == null)
+            return;
+
+        OutfitStats stats =
+            GameManager.Instance.GetTotalOutfitStats();
+
+        float luckBonus = Mathf.Clamp(
+            stats.luck * luckBonusPerPoint,
+            0f,
+            maxLuckBonus
+        );
+
+        luckMultiplier = 1f + luckBonus;
+
+        if (showSpawnLogs)
+        {
+            Debug.Log(
+                $"[{name}] Multiplicador de Sorte: " +
+                luckMultiplier.ToString("0.##")
+            );
         }
     }
 
@@ -111,7 +159,15 @@ public class ObstacleSpawner : MonoBehaviour
         if (element == null || element.prefab == null)
             return 0f;
 
-        return Mathf.Max(0f, element.weight);
+        float baseWeight = Mathf.Max(0f, element.weight);
+
+        if (element.type == SpawnType.Coin ||
+            element.type == SpawnType.ItemBox)
+        {
+            return baseWeight * luckMultiplier;
+        }
+
+        return baseWeight;
     }
 
     private void ResetSpawnTimer()

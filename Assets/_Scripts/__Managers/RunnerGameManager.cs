@@ -90,7 +90,7 @@ public class RunnerGameManager : MonoBehaviour
 
         if (itemBoxCoins > 0)
         {
-            boxCoinsText.text = $"+{itemBoxCoins}";
+            boxCoinsText.text = $"+{finalReward - collectedCoins}";
         }
 
         totalCoinsText.text = $"{finalReward.ToString()}$";

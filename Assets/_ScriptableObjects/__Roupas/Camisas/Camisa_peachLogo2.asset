@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05464be50eae6424caa43f4a0b0c1b43, type: 3}
-  m_Name: Camisa_brancaComprida
+  m_Name: Camisa_peachLogo2
   m_EditorClassIdentifier: 
-  clothName: Camisa Branca Manga-comprida
-  itemID: shirt_03
+  clothName: Camisa Peach DripLab
+  itemID: Camisa_04
   type: 0
   rarity: 1
-  price: 10
-  isLocked: 1
-  icon: {fileID: 21300000, guid: 149b62be2c0d66843b7916e6b877f59d, type: 3}
-  characterSprite: {fileID: 0}
+  price: 0
+  isLocked: 0
+  icon: {fileID: 21300000, guid: 5e4a7bf00a67a974e9facc30905b16a6, type: 3}
+  characterSprite: {fileID: 21300000, guid: 5e4a7bf00a67a974e9facc30905b16a6, type: 3}
   speedBonus: 0
   luckBonus: 0
   healthBonus: 0
   themeBonuses:
   - theme: {fileID: 11400000, guid: 3fb983ea10da7ea4faf8041c507b71b1, type: 2}
-    matchLevel: 1
+    matchLevel: 0
   - theme: {fileID: 11400000, guid: f11adc1c4a1e61b46a25cf4b99f2af23, type: 2}
-    matchLevel: 1
+    matchLevel: 0

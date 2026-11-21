@@ -11,8 +11,10 @@ public class GroundMovement : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float groundSpeed = 5f;
-    public int speedIncreaseRate = 5;
+    [SerializeField] private float speedIncreaseRate = 0.05f;
     [SerializeField] private float maxSpeed = 40f;
+
+    private float currentIncreaseRate;
 
     private float groundWidth;
 
@@ -32,6 +34,8 @@ public class GroundMovement : MonoBehaviour
     {
         // Obtém a largura do primeiro bloco
         groundWidth = ground1.localScale.x;
+
+        ApplySpeedBonus();
     }
 
     private void Update()
@@ -39,13 +43,49 @@ public class GroundMovement : MonoBehaviour
         IncreaseSpeed();
         MoveGround();
         RepositionGround();
+
+        Debug.Log(
+        $"Velocidade atual: {groundSpeed:F3} | " +
+        $"Aceleração: {currentIncreaseRate:F3}"
+    );
     }
+
+    private void ApplySpeedBonus()
+    {
+        currentIncreaseRate = speedIncreaseRate;
+
+        if (GameManager.Instance == null)
+            return;
+
+        OutfitStats stats =
+            GameManager.Instance.GetTotalOutfitStats();
+
+        if (stats.speed <= 0)
+            return;
+
+        // Cada ponto reduz a aceleração em 1%
+        // O limite máximo de redução é 50%
+        float reduction = Mathf.Clamp(
+            stats.speed * 0.01f,
+            0f,
+            0.5f
+        );
+
+        currentIncreaseRate =
+            speedIncreaseRate * (1f - reduction);
+
+        Debug.Log(
+            "Aceleração com bônus: " +
+            currentIncreaseRate
+        );
+    }
+
 
     private void IncreaseSpeed()
     {
         if(groundSpeed < maxSpeed)
         {
-            groundSpeed += (speedIncreaseRate / 100) * Time.deltaTime;
+            groundSpeed += currentIncreaseRate * Time.deltaTime;
             groundSpeed = Mathf.Min(groundSpeed, maxSpeed);
         }
     }
