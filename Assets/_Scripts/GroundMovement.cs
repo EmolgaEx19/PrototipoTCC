@@ -32,7 +32,7 @@ public class GroundMovement : MonoBehaviour
 
     private void Start()
     {
-        // Obtém a largura do primeiro bloco
+
         groundWidth = ground1.localScale.x;
 
         ApplySpeedBonus();
@@ -44,10 +44,6 @@ public class GroundMovement : MonoBehaviour
         MoveGround();
         RepositionGround();
 
-        /*Debug.Log(
-        $"Velocidade atual: {groundSpeed:F3} | " +
-        $"Aceleração: {currentIncreaseRate:F3}"
-    );*/
     }
 
     private void ApplySpeedBonus()
@@ -63,8 +59,6 @@ public class GroundMovement : MonoBehaviour
         if (stats.speed <= 0)
             return;
 
-        // Cada ponto reduz a aceleração em 1%
-        // O limite máximo de redução é 50%
         float reduction = Mathf.Clamp(
             stats.speed * 0.01f,
             0f,
@@ -74,10 +68,6 @@ public class GroundMovement : MonoBehaviour
         currentIncreaseRate =
             speedIncreaseRate * (1f - reduction);
 
-        /*Debug.Log(
-            "Aceleração com bônus: " +
-            currentIncreaseRate
-        );*/
     }
 
 
@@ -92,7 +82,7 @@ public class GroundMovement : MonoBehaviour
 
     private void MoveGround()
     {
-        // Move os dois blocos para a esquerda
+
         Vector3 movement = Vector3.left * groundSpeed * Time.deltaTime;
 
         ground1.position += movement;
@@ -101,7 +91,7 @@ public class GroundMovement : MonoBehaviour
 
     private void RepositionGround()
     {
-        // Verifica se o primeiro bloco saiu completamente
+
         if (ground1.position.x <= -groundWidth)
         {
             ground1.position = new Vector3(
@@ -111,7 +101,7 @@ public class GroundMovement : MonoBehaviour
             );
         }
 
-        // Verifica se o segundo bloco saiu completamente
+
         if (ground2.position.x <= -groundWidth)
         {
             ground2.position = new Vector3(

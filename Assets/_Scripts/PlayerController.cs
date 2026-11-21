@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         ApplyHealthBonus();
-        // Inicializa a vida do jogador
         maxHealth = Mathf.Max(1, maxHealth);
         health = maxHealth;
         isAlive = true;
@@ -81,10 +80,6 @@ public class PlayerController : MonoBehaviour
         );
 
         maxHealth += bonusHealth;
-
-        /*Debug.Log(
-            "Vida máxima com bônus: " + maxHealth
-        );*/
     }
 
 
@@ -106,8 +101,6 @@ public class PlayerController : MonoBehaviour
             health = 0;
             Die();
         }
-
-        //Debug.Log("Vida do jogador: " + health);
     }
 
     private void UpdateHealthUI()

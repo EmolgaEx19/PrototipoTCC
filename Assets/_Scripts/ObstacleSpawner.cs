@@ -11,7 +11,6 @@ public class ObstacleSpawner : MonoBehaviour
         ItemBox
     }
 
-    //Armazena cada elemento e sua probabilidade
     [System.Serializable]
     public class SpawnElement
     {
@@ -34,8 +33,6 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float maxLuckBonus = 0.5f;
     private float luckMultiplier = 1f;
 
-    [SerializeField] private bool showSpawnLogs = false;
-
     private float spawnTimer;
 
     private void Start()
@@ -55,7 +52,6 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    // Calcula o bônus das roupas uma vez por rodada
     private void ApplyLuckBonus()
     {
         luckMultiplier = 1f;
@@ -73,14 +69,6 @@ public class ObstacleSpawner : MonoBehaviour
         );
 
         luckMultiplier = 1f + luckBonus;
-
-        if (showSpawnLogs)
-        {
-            /*Debug.Log(
-                $"[{name}] Multiplicador de Sorte: " +
-                luckMultiplier.ToString("0.##")
-            );*/
-        }
     }
 
     private void SpawnObstacle()
@@ -92,32 +80,22 @@ public class ObstacleSpawner : MonoBehaviour
             return;
         }
 
-        // Seleciona um Prefab com base nos pesos.
         GameObject selectedPrefab = ChoosePrefabByWeight();
 
         if (selectedPrefab == null)
             return;
 
-        // Instancia o elemento selecionado.
         GameObject newObstacle = Instantiate(
             selectedPrefab,
             spawnPoint.position,
             Quaternion.identity
         );
-
-        if (showSpawnLogs)
-        {
-            /*Debug.Log(
-                $"[{name}] Spawnou: {selectedPrefab.name}"
-            );*/
-        }
     }
 
     private GameObject ChoosePrefabByWeight()
     {
         float totalWeight = 0f;
 
-        // Calcula a soma dos pesos disponíveis.
         foreach (SpawnElement element in spawnElements)
         {
             totalWeight += GetEffectiveWeight(element);
@@ -126,13 +104,11 @@ public class ObstacleSpawner : MonoBehaviour
         if (totalWeight <= 0f)
             return null;
 
-        // Sorteia um valor entre 0 e o peso total.
         float randomValue = Random.Range(0f, totalWeight);
 
         float currentWeight = 0f;
         GameObject lastValidPrefab = null;
 
-        // Identifica o elemento correspondente.
         foreach (SpawnElement element in spawnElements)
         {
             float weight = GetEffectiveWeight(element);
@@ -152,8 +128,6 @@ public class ObstacleSpawner : MonoBehaviour
         return lastValidPrefab;
     }
 
-    // Centraliza o cálculo dos pesos.
-    // Futuramente receberá os bônus das roupas.
     private float GetEffectiveWeight(SpawnElement element)
     {
         if (element == null || element.prefab == null)

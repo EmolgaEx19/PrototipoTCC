@@ -35,11 +35,6 @@ public class ClothingData : ScriptableObject
     public Sprite icon;
     public Sprite characterSprite;
 
-    /*[TextArea]
-    public string description;*/
-
-    /*[Header("Pontuacao")]
-    public int baseScore;*/
 
     [Header("Atributos")]
     public float speedBonus;

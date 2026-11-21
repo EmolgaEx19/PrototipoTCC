@@ -13,7 +13,6 @@ public class PlatformScript : MonoBehaviour
             platformSpeed = GroundMovement.Instance.GetSpeed();
         }
 
-        // Movimenta a plataforma para a esquerda
         transform.position += Vector3.left * platformSpeed * Time.deltaTime;
     }
 

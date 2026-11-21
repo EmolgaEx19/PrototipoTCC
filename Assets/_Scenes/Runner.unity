@@ -3551,7 +3551,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1396333695}
   - component: {fileID: 1396333696}
-  - component: {fileID: 1396333697}
   m_Layer: 0
   m_Name: RunnerGameManager
   m_TagString: Untagged
@@ -3597,18 +3596,6 @@ MonoBehaviour:
   boxCoinsText: {fileID: 1761432633}
   totalCoinsText: {fileID: 1004775295}
   coinMultiplier: 1
---- !u!114 &1396333697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396333694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb5a15abee375ed45bfc8dfd5770840f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1408451195
 GameObject:
   m_ObjectHideFlags: 0

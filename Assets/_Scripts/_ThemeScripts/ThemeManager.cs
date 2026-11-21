@@ -26,14 +26,11 @@ public class ThemeManager : MonoBehaviour
 
     public void GenerateRandomTheme()
     {
-        //verifica se algum tema foi criado
         if (availableThemes == null || availableThemes.Length == 0)
         {
-            //Debug.LogWarning("Nenhum tema foi configurado!");
             return;
         }
 
-        // Seleciona apenas temas válidos.
         System.Collections.Generic.List<PossibleTheme> validThemes =
             new System.Collections.Generic.List<PossibleTheme>();
 
@@ -45,10 +42,8 @@ public class ThemeManager : MonoBehaviour
             }
         }
 
-        //verifica se algum tema válido foi adicionado
         if (validThemes.Count == 0)
         {
-            //Debug.LogWarning("Nenhum tema válido encontrado!");
             return;
         }
 
@@ -65,7 +60,5 @@ public class ThemeManager : MonoBehaviour
         {
             themeText.text = CurrentTheme.themeName;
         }
-
-        //Debug.Log("Tema sorteado: " + CurrentTheme.themeName);
     }
 }

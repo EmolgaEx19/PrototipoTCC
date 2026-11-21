@@ -28,7 +28,6 @@ public class ItemDropUI : MonoBehaviour
         rewardsPanel.SetActive(false);
     }
 
-    // Mostra uma mensagem temporária durante a corrida
     public void ShowNotification(string message)
     {
         if (notificationCoroutine != null)
@@ -53,7 +52,6 @@ public class ItemDropUI : MonoBehaviour
         notificationCoroutine = null;
     }
 
-    // Prepara o menu quando a rodada termina
     public void PrepareGameOver()
     {
         List<ClothingData> clothes =
@@ -76,13 +74,11 @@ public class ItemDropUI : MonoBehaviour
         }
     }
 
-    // Abre a lista de roupas desbloqueadas
     public void OpenRewardsPanel()
     {
         rewardsPanel.SetActive(true);
     }
 
-    // Fecha a lista
     public void CloseRewardsPanel()
     {
         rewardsPanel.SetActive(false);

@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class ButtonVeryfier : MonoBehaviour
 {
     [Header("Identificação")]
-    //public string itemID;
     public ClothingData clothingData;
 
     [Header("Visual")]
@@ -42,7 +41,6 @@ public class ButtonVeryfier : MonoBehaviour
             clothingData.isLocked
         );
 
-        // O botão precisa continuar clicável para permitir a compra.
         button.interactable = true;
 
         if (lockIcon != null)
@@ -71,19 +69,14 @@ public class ButtonVeryfier : MonoBehaviour
 
             if (!purchased)
             {
-                //Debug.Log("Moedas insuficientes!");
                 return;
             }
 
             UpdateLockState();
-
-            //Debug.Log("Roupa comprada: " + clothingData.clothName);
         }
 
-        // Registra a roupa equipada no GameManager
         GameManager.Instance.EquipClothing(clothingData);
 
-        // Executa as ações de seleção
         onClothingSelected?.Invoke();
     }
 }
