@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         OnCoinsChanged?.Invoke();
 
-        Debug.Log($"Total de moedas: {totalCoins}");
+        //Debug.Log($"Total de moedas: {totalCoins}");
     }
 
     public int GetTotalCoins()
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
         OnCoinsChanged?.Invoke();
 
-        Debug.Log($"Moedas restantes: {totalCoins}");
+        //Debug.Log($"Moedas restantes: {totalCoins}");
 
         return true;
     }
@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         // Verifica se possui moedas suficientes
         if (!TrySpendCoins(price))
         {
-            Debug.Log("Moedas insuficientes!");
+            //Debug.Log("Moedas insuficientes!");
             return false;
         }
 
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(itemID, 1);
         PlayerPrefs.Save();
 
-        Debug.Log($"Roupa {itemID} desbloqueada!");
+        //Debug.Log($"Roupa {itemID} desbloqueada!");
 
         return true;
     }

@@ -44,10 +44,10 @@ public class GroundMovement : MonoBehaviour
         MoveGround();
         RepositionGround();
 
-        Debug.Log(
+        /*Debug.Log(
         $"Velocidade atual: {groundSpeed:F3} | " +
         $"Aceleração: {currentIncreaseRate:F3}"
-    );
+    );*/
     }
 
     private void ApplySpeedBonus()
@@ -74,10 +74,10 @@ public class GroundMovement : MonoBehaviour
         currentIncreaseRate =
             speedIncreaseRate * (1f - reduction);
 
-        Debug.Log(
+        /*Debug.Log(
             "Aceleração com bônus: " +
             currentIncreaseRate
-        );
+        );*/
     }
 
 

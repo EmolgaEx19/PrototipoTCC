@@ -65,9 +65,9 @@ public class ItemDropManager : MonoBehaviour
             LastRewardMessage =
               "Nova roupa encontrada: " + selected.clothName;
 
-            Debug.Log(
+            /*Debug.Log(
                 "Drop reservado: " + selected.clothName
-            );
+            );*/
         }
         else
         {
@@ -76,10 +76,10 @@ public class ItemDropManager : MonoBehaviour
             LastRewardMessage =
               "Recompensa encontrada: +" + fallbackCoins + " moedas!";
 
-            Debug.Log(
+            /*Debug.Log(
                 "Recompensa alternativa: " +
                 fallbackCoins + " moedas"
-            );
+            );*/
         }
 
         return true;
@@ -96,10 +96,10 @@ public class ItemDropManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(clothing.itemID, 1);
 
-            Debug.Log(
+            /*Debug.Log(
                 "Roupa desbloqueada: " +
                 clothing.clothName
-            );
+            );*/
         }
 
         if (pendingClothes.Count > 0)
@@ -107,10 +107,10 @@ public class ItemDropManager : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        Debug.Log(
+        /*Debug.Log(
             "Moedas alternativas recebidas: " +
             pendingCoins
-        );
+        );*/
 
         return pendingCoins;
     }

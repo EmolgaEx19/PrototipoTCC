@@ -20,11 +20,13 @@ MonoBehaviour:
   isLocked: 1
   icon: {fileID: 21300000, guid: a1de5acfb1477dd43807eb63772fa7e7, type: 3}
   characterSprite: {fileID: 21300000, guid: a1de5acfb1477dd43807eb63772fa7e7, type: 3}
-  speedBonus: 0
-  luckBonus: 0
-  healthBonus: 0
+  speedBonus: 5
+  luckBonus: 10
+  healthBonus: 10
   themeBonuses:
+  - theme: {fileID: 11400000, guid: ec3578fce37d3f045afa96f8768c1249, type: 2}
+    matchLevel: 1
   - theme: {fileID: 11400000, guid: 3fb983ea10da7ea4faf8041c507b71b1, type: 2}
-    matchLevel: 0
+    matchLevel: 5
   - theme: {fileID: 11400000, guid: f11adc1c4a1e61b46a25cf4b99f2af23, type: 2}
-    matchLevel: 0
+    matchLevel: 1

@@ -29,7 +29,7 @@ public class ThemeManager : MonoBehaviour
         //verifica se algum tema foi criado
         if (availableThemes == null || availableThemes.Length == 0)
         {
-            Debug.LogWarning("Nenhum tema foi configurado!");
+            //Debug.LogWarning("Nenhum tema foi configurado!");
             return;
         }
 
@@ -48,7 +48,7 @@ public class ThemeManager : MonoBehaviour
         //verifica se algum tema válido foi adicionado
         if (validThemes.Count == 0)
         {
-            Debug.LogWarning("Nenhum tema válido encontrado!");
+            //Debug.LogWarning("Nenhum tema válido encontrado!");
             return;
         }
 
@@ -66,6 +66,6 @@ public class ThemeManager : MonoBehaviour
             themeText.text = CurrentTheme.themeName;
         }
 
-        Debug.Log("Tema sorteado: " + CurrentTheme.themeName);
+        //Debug.Log("Tema sorteado: " + CurrentTheme.themeName);
     }
 }

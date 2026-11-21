@@ -1988,10 +1988,10 @@ MonoBehaviour:
     weight: 20
   - prefab: {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
     type: 2
-    weight: 19
+    weight: 16
   - prefab: {fileID: 1997320754049566040, guid: 00b5f0605040d1544b959d119b1f07a3, type: 3}
     type: 3
-    weight: 1
+    weight: 4
   spawnPoint: {fileID: 659428620}
   minSpawnInterval: 2
   maxSpawnInterval: 4
@@ -2501,13 +2501,13 @@ MonoBehaviour:
     weight: 20
   - prefab: {fileID: 4594877038855479125, guid: a830d715a3b24ae448e5b30a2c26cf2a, type: 3}
     type: 1
-    weight: 10
+    weight: 5
   - prefab: {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
     type: 2
     weight: 25
   - prefab: {fileID: 1997320754049566040, guid: 00b5f0605040d1544b959d119b1f07a3, type: 3}
     type: 3
-    weight: 5
+    weight: 10
   spawnPoint: {fileID: 951262331}
   minSpawnInterval: 2
   maxSpawnInterval: 4
@@ -4227,10 +4227,10 @@ MonoBehaviour:
     weight: 20
   - prefab: {fileID: 5021383415430910528, guid: bbb4ac0f92fcc1b43bfbda9b1f7a2c0d, type: 3}
     type: 2
-    weight: 19
+    weight: 16
   - prefab: {fileID: 1997320754049566040, guid: 00b5f0605040d1544b959d119b1f07a3, type: 3}
     type: 3
-    weight: 100
+    weight: 4
   spawnPoint: {fileID: 1583556419}
   minSpawnInterval: 2
   maxSpawnInterval: 4
@@ -4494,6 +4494,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3f12f724b1ea4aa4e846166a4c58a3cd, type: 2}
   - {fileID: 11400000, guid: fd55bf7a12ad2aa48ad4918d48a9be37, type: 2}
   - {fileID: 11400000, guid: 00218fc034fd4fb45a0a4cbe16f72320, type: 2}
+  - {fileID: 11400000, guid: 0a181ba2872ecc94e8c9c437a5c4e15a, type: 2}
+  - {fileID: 11400000, guid: 81726a7c2f45d704db41c2e22440e467, type: 2}
+  - {fileID: 11400000, guid: ba2f000f59b219a4cbcbf32b5e654ecf, type: 2}
   fallbackCoins: 50
 --- !u!1 &1722950330
 GameObject:

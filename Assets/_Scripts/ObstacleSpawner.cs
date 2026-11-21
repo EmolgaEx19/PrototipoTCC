@@ -76,10 +76,10 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (showSpawnLogs)
         {
-            Debug.Log(
+            /*Debug.Log(
                 $"[{name}] Multiplicador de Sorte: " +
                 luckMultiplier.ToString("0.##")
-            );
+            );*/
         }
     }
 
@@ -107,9 +107,9 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (showSpawnLogs)
         {
-            Debug.Log(
+            /*Debug.Log(
                 $"[{name}] Spawnou: {selectedPrefab.name}"
-            );
+            );*/
         }
     }
 

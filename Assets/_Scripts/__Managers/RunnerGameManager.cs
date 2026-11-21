@@ -72,7 +72,7 @@ public class RunnerGameManager : MonoBehaviour
         if (itemDropManager != null)
         {
             itemBoxCoins = itemDropManager.DeliverRewards();
-            Debug.Log("Moedas concedidas: " +  itemBoxCoins);
+            //Debug.Log("Moedas concedidas: " +  itemBoxCoins);
         }
 
         int finalReward = rewardedCoins + itemBoxCoins; //total de moedas após multiplicação + moedas das caixas

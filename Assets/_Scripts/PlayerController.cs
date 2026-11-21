@@ -82,9 +82,9 @@ public class PlayerController : MonoBehaviour
 
         maxHealth += bonusHealth;
 
-        Debug.Log(
+        /*Debug.Log(
             "Vida máxima com bônus: " + maxHealth
-        );
+        );*/
     }
 
 
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             Die();
         }
 
-        Debug.Log("Vida do jogador: " + health);
+        //Debug.Log("Vida do jogador: " + health);
     }
 
     private void UpdateHealthUI()

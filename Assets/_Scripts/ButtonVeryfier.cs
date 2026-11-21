@@ -71,13 +71,13 @@ public class ButtonVeryfier : MonoBehaviour
 
             if (!purchased)
             {
-                Debug.Log("Moedas insuficientes!");
+                //Debug.Log("Moedas insuficientes!");
                 return;
             }
 
             UpdateLockState();
 
-            Debug.Log("Roupa comprada: " + clothingData.clothName);
+            //Debug.Log("Roupa comprada: " + clothingData.clothName);
         }
 
         // Registra a roupa equipada no GameManager
