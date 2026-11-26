@@ -7,4 +7,14 @@ public class Manager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ChangeSceneAndReset(string sceneName)
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetOutfit();
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
 }

@@ -170,4 +170,22 @@ public class GameManager : MonoBehaviour
         );
     }
 
+    //Reset:
+    public void ResetOutfit()
+    {
+        // Limpa os sprites selecionados
+        selectedBody = null;
+        selectedShoes = null;
+
+        // Remove todas as roupas equipadas
+        equippedClothes.Clear();
+
+        // Remove o tema atual
+        currentTheme = null;
+
+        // Notifica os sistemas que dependem das roupas
+        OnOutfitChanged?.Invoke();
+    }
+
+
 }

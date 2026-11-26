@@ -5,10 +5,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public float jumpForce = 10f;
+    private float originalGravity;
+    [SerializeField] private float fallMultiplyer = 3;
+
     private bool isGrounded;
 
     public int maxHealth = 100;
     public int health;
+    [SerializeField] private bool isInvencible = false;
     public bool isAlive = true;
 
     [Header("Damage Feedback")]
@@ -25,11 +29,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        originalGravity = rb.gravityScale;
+
         ApplyHealthBonus();
-        // Inicializa a vida do jogador
         maxHealth = Mathf.Max(1, maxHealth);
         health = maxHealth;
         isAlive = true;
+        isInvencible = false;
 
         UpdateHealthUI();
     }
@@ -43,6 +49,8 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        ApplyGravity();
     }
 
     private void Jump()
@@ -83,14 +91,14 @@ public class PlayerController : MonoBehaviour
         maxHealth += bonusHealth;
 
         /*Debug.Log(
-            "Vida máxima com bônus: " + maxHealth
+            "Vida mï¿½xima com bï¿½nus: " + maxHealth
         );*/
     }
 
 
     public void TakeDamage(int damage)
     {
-        if (!isAlive || damage <= 0)
+        if (!isAlive || damage <= 0 || isInvencible == true)
             return;
 
         health -= damage;
@@ -129,5 +137,12 @@ public class PlayerController : MonoBehaviour
         {
             runnerManager.FinalizeRun();
         }
+    }
+
+    private void ApplyGravity(){
+        if(rb.velocity.y < 0f)
+            rb.gravityScale = originalGravity * fallMultiplyer;
+        else
+            rb.gravityScale = originalGravity;
     }
 }
