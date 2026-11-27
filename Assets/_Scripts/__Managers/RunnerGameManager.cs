@@ -117,6 +117,10 @@ public class RunnerGameManager : MonoBehaviour
     public void GameOverChanceScene(string sceneName)
     {
         Time.timeScale = 1f;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetOutfit();
+        }
         SceneManager.LoadScene(sceneName);
     }
 }
