@@ -332,9 +332,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 100
-  fallMultiplyer: 2
+  fallMultiplyer: 1.75
   maxHealth: 100
   health: 100
+  isInvencible: 0
   isAlive: 1
   damageFlashUI: {fileID: 868299}
   healthBarUI: {fileID: 127044156}
