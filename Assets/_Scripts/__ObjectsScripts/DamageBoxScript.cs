@@ -14,6 +14,12 @@ public class BoxDamage : MonoBehaviour
         PlayerController player =
             collision.GetComponent<PlayerController>();
 
+        Rigidbody2D rbPlayer =
+            collision.attachedRigidbody;
+
+        if (rbPlayer.velocity.y <= 0)
+            return;
+
         if (player != null)
         {
             player.TakeDamage(damage);

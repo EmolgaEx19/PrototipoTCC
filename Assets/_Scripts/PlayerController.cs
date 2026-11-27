@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplyer = 3;
 
     private bool isGrounded;
-
     public int maxHealth = 100;
     public int health;
     [SerializeField] private bool isInvencible = false;

@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ObstacleSpawner : MonoBehaviour
 {
@@ -18,16 +19,25 @@ public class ObstacleSpawner : MonoBehaviour
         public GameObject prefab;
         public SpawnType type;
 
-        [Min(0f)]
-        public float weight = 1f;
+        [Header("Pesos para Spawn")]
+        [Min(0f)] public float initialWeight = 1f;
+        [Min(0f)] public float finalWeight = 1f;
     }
 
     [SerializeField] private SpawnElement[] spawnElements;
 
     [Header("Configurações do Spawn")]
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float initialSpawnDelay = 2.5f;
     [SerializeField] private float minSpawnInterval = 2f;
     [SerializeField] private float maxSpawnInterval = 4f;
+
+    [Header("Progressão dos Pesos")]
+    [SerializeField, Min(0.01f)]
+    private float progressionDuration = 120f;
+
+    private float elapsedTime = 0f;
+    private float spawnProgress = 0f;
 
     [Header("Bônus de Sorte")]
     [SerializeField] private float luckBonusPerPoint = 0.01f;
@@ -41,11 +51,17 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         ApplyLuckBonus();
+        spawnTimer = initialSpawnDelay;
+
+        elapsedTime = 0f;
+        spawnProgress = 0f;
     }
 
 
     private void Update()
     {
+        UpdateSpawnProgress();
+
         spawnTimer -= Time.deltaTime;
 
         if (spawnTimer <= 0f)
@@ -53,6 +69,16 @@ public class ObstacleSpawner : MonoBehaviour
             ResetSpawnTimer();
             SpawnObstacle();  
         }
+    }
+
+    // Calcula a progressão entre 0 e 1
+    private void UpdateSpawnProgress()
+    {
+        elapsedTime += Time.deltaTime;
+
+        spawnProgress = Mathf.Clamp01(
+            elapsedTime / progressionDuration
+        );
     }
 
     // Calcula o bônus das roupas uma vez por rodada
@@ -99,7 +125,8 @@ public class ObstacleSpawner : MonoBehaviour
             return;
 
         // Instancia o elemento selecionado.
-        GameObject newObstacle = Instantiate(
+        /*GameObject newObstacle = */
+        Instantiate(
             selectedPrefab,
             spawnPoint.position,
             Quaternion.identity
@@ -108,7 +135,8 @@ public class ObstacleSpawner : MonoBehaviour
         if (showSpawnLogs)
         {
             /*Debug.Log(
-                $"[{name}] Spawnou: {selectedPrefab.name}"
+                $"[{name}] Spawnou: {selectedPrefab.name}" +
+                $"Progressão: {spawnProgress:P0}"
             );*/
         }
     }
@@ -159,19 +187,30 @@ public class ObstacleSpawner : MonoBehaviour
         if (element == null || element.prefab == null)
             return 0f;
 
-        float baseWeight = Mathf.Max(0f, element.weight);
+        float currentWeight = Mathf.Lerp(
+            Mathf.Max(0f, element.initialWeight),
+            Mathf.Max(0f, element.finalWeight),
+            spawnProgress
+        );
 
         if (element.type == SpawnType.Coin ||
             element.type == SpawnType.ItemBox)
         {
-            return baseWeight * luckMultiplier;
+            currentWeight *= luckMultiplier;    
         }
 
-        return baseWeight;
+        return currentWeight;
     }
 
     private void ResetSpawnTimer()
     {
+        float minInterval = Mathf.Max(0.01f, minSpawnInterval);
+
+        float maxInterval = Mathf.Max(
+            minInterval,
+            maxSpawnInterval
+        );
+
         spawnTimer = Random.Range(
             minSpawnInterval,
             maxSpawnInterval

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clothName: "Cal\xE7a Preta Rasgada"
   itemID: pant_02
-  type: 0
+  type: 1
   rarity: 0
   price: 10
   isLocked: 1
