@@ -114,7 +114,7 @@ public class RunnerGameManager : MonoBehaviour
         );
     }
 
-    public void GameOverChanceScene(string sceneName)
+    public void GameOverChangeScene(string sceneName)
     {
         Time.timeScale = 1f;
 
